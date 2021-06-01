@@ -15,11 +15,13 @@ describe('Mocking using jest.spyOn and mockRestore function', function () {
 		mockSpy.mockReturnValue({ name: 'john doe', age: 28, hobby: 'swimming' })
 
 		let afterMockValue = person.get()
+		expect(person.get).toBeDefined()
 		expect(afterMockValue).toMatchObject({ name: 'john doe', age: 28, hobby: 'swimming' })
 
 		mockSpy.mockRestore()
 		const beforeMockValue = person.get()
 
+		expect(person.get).toBeDefined()
 		expect(jest.isMockFunction(mockSpy)).toBeTruthy()
 		expect(beforeMockValue).toMatchObject({ name: 'restu wahyu saputra', age: 25, hobby: 'coding' })
 		done()
