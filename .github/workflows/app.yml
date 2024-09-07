@@ -2,7 +2,7 @@ name: '[CI/CD] Application Workflow'
 
 on:
   workflow_run:
-    workflows: docker
+    workflows: [docker]
     types: completed
 
 jobs:
