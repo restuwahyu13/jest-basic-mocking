@@ -14,7 +14,7 @@ jobs:
       - name: Use Node.Js version
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Dump environment
         run: echo ${{ env.NODE_ENV }}
