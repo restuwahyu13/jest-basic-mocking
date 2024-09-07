@@ -19,8 +19,8 @@ jobs:
 
       - name: Check credentials
         run: |
-          ${{ env.NODE_ENV }}
-          ${{ secrets.JWT_SECRET }}
+          echo ${{ env.NODE_ENV }}
+          echo ${{ secrets.JWT_SECRET }}
 
       - name: Install all dependencies
         run: npm install
