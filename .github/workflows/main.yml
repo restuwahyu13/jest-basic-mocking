@@ -6,6 +6,7 @@ on:
 
 env:
   JWT_SECRET: ${{ secrets.JWT_SECRET }}
+  NODE_ENV: ${{ vars.NODE_ENV }}
 
 jobs:
   build:
