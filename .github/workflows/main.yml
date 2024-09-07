@@ -10,15 +10,24 @@ env:
 jobs:
   build:
     strategy:
+      max-parallel: 1
       matrix:
         os: [ubuntu-latest, windows-latest]
+        node-version: [12, 14, 16, 18, 20]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Use node version
+        uses: actions/setup-node
+        with:
+          node-version: ${{ matrix.node-version }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Install all dependencies
         run: npm install
+
       - name: Run all test cases
         run: npm test
