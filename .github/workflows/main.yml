@@ -8,18 +8,13 @@ env:
   NODE_ENV: development
 
 jobs:
-  clone:
+  install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-  install:
-    needs: clone
-    runs-on: ubuntu-latest
-    steps:
       - name: Install all dependencies
         run: npm install
 
