@@ -22,5 +22,5 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - name: Run all test cases
-        run: npm test
+      - uses: actions/checkout@v4
+      - run: npm test
