@@ -4,27 +4,23 @@ on:
   push:
     branches: [main]
 
-env:
-  NODE_ENV: development
-
 jobs:
   build:
-    strategy:
-      max-parallel: 3
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [12, 14, 16, 18, 20]
-    runs-on: ${{ matrix.os }}
+    # strategy:
+    #   max-parallel: 3
+    #   matrix:
+    #     os: [ubuntu-latest, windows-latest]
+    #     node-version: [12, 14, 16, 18, 20]
+    # runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Use node version
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
+      - name: Check credentials
+        run: |
+          ${{ env.NODE_ENV }}
+          ${{ secrets.JWT_SECRET }}
 
       - name: Install all dependencies
         run: npm install
