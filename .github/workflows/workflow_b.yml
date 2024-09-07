@@ -1,8 +1,8 @@
-name: '[CI/CD] Application Workflow'
+name: workflow_b
 
 on:
   workflow_run:
-    workflows: ['[CI/CD] Docker Workflow']
+    workflows: [workflow_a]
     types: [completed]
     branches:
       - main
