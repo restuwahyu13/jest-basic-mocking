@@ -1,14 +1,14 @@
-name: Node.js CI
+name: '[CI/CD] Jest Basic Mocking'
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 env:
   NODE_ENV: development
 
 jobs:
-  build:
+  clone:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -16,13 +16,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check Node & Npm Version
-        run: |
-            node -v
-            npm -v
-
+  install:
+    needs: clone
+    runs-on: ubuntu-latest
+    steps:
       - name: Install all dependencies
-        run: npm i
+        run: npm install
 
-      - name: Run all test
+  test:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run all test cases
         run: npm test
