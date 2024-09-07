@@ -2,8 +2,8 @@ name: '[CI/CD] Application Workflow'
 
 on:
   workflow_run:
-    workflows: docker
-    types: completed
+    workflows: [workflow_a]
+    types: [completed]
     branches:
       - main
 
