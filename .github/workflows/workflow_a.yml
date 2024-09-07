@@ -1,4 +1,4 @@
-name: workflow_a
+name: DOCKER_CI/CD
 
 on:
   push:

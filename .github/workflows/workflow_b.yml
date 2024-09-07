@@ -1,8 +1,8 @@
-name: workflow_b
+name: APPLICATION_CI/CD
 
 on:
   workflow_run:
-    workflows: [workflow_a]
+    workflows: [DOCKER_CI/CD]
     types: [completed]
     branches:
       - main
