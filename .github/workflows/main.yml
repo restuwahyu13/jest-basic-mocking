@@ -1,0 +1,26 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  NODE_ENV: development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.Js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Dump environment
+        run: echo ${{ env.NODE_ENV }}
+
+      - name: Install all dependencies
+        run: npm install
+
+      - name: Run all test
+        run: npm test
