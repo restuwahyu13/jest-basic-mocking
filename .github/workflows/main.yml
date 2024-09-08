@@ -1,22 +1,25 @@
 name: CI/CD Jest Basic Mocking
 
 on:
+  push:
+    branches:
+      - dev
   # workflow_run:
   #   workflows: [DOCKER_CI/CD]
   #   types: [completed]
   #   branches:
   #     - main
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: Pilih branch yang ingin anda deploy
-        required: true
-      # environtment:
-      #   description: Pilih environtment yang ingin anda deploy
-      #   type: choice
-      #   options:
-      #     - production
-      #     - staging
+  # workflow_dispatch:
+  #   inputs:
+  #     branch:
+  #       description: Pilih branch yang ingin anda deploy
+  #       required: true
+  # environtment:
+  #   description: Pilih environtment yang ingin anda deploy
+  #   type: choice
+  #   options:
+  #     - production
+  #     - staging
 
 jobs:
   build:
@@ -37,7 +40,7 @@ jobs:
         run: echo ${{ env.JWT_SECRET }}
 
       - name: Install all dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run all test cases
         run: npm test
