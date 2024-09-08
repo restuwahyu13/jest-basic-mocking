@@ -79,10 +79,11 @@ jobs:
       #     echo env: "${{ toJson(env) }}"
       #     echo runs: "${{ toJson(runner) }}"
 
-      - name: Previous Step Success
-        if: ${{ success() }}
-        run: echo "Previous Steps Success ${{ runner.name }}"
-
       - name: Previous Step Failure
+        id: failure
         if: ${{ failure() }}
         run: echo "Previous Steps Failure ${{ runner.name }}"
+
+      - name: Previous Step Success
+        if: ${{ success() }}
+        run: echo "Previous Steps Success ${{ steps.failure.outcome }}"
