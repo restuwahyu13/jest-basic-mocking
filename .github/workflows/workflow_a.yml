@@ -2,7 +2,7 @@ name: DOCKER_CI/CD
 
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '* * * * *'
   # push:
   #   branches:
   #     - main
