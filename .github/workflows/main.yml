@@ -90,3 +90,4 @@ jobs:
         run: |
           echo "Previous Steps Success ${{ steps.failure.outcome }}"
           echo "Name: ${{ env.name }}"
+          echo '### Hello Wordl' >> $GITHUB_STEP_SUMMARY
