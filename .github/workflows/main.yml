@@ -6,25 +6,26 @@ on:
   #     - main
   #   types:
   #     - closed
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   # workflow_run:
   #   workflows: [DOCKER_CI/CD]
   #   types: [completed]
   #   branches:
   #     - main
-  # workflow_dispatch:
-  #   inputs:
-  #     branch:
-  #       description: Pilih branch yang ingin anda deploy
-  #       required: true
-  # environtment:
-  #   description: Pilih environtment yang ingin anda deploy
-  #   type: choice
-  #   options:
-  #     - production
-  #     - staging
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Pilih branch yang ingin anda deploy
+        required: true
+      environtment:
+        description: Pilih environtment yang ingin anda deploy
+        type: choice
+        options:
+          - production
+          - staging
+          - development
 
 jobs:
   build:
