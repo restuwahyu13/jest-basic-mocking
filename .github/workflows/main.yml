@@ -48,7 +48,7 @@ jobs:
       - name: Install all dependencies
         run: npm ci
 
-      - name: Run all test cases
+      - name: test
         run: npm test
 
       - name: Method Github
@@ -67,3 +67,4 @@ jobs:
           echo github.action_repository : "${{ github.action_repository }}"
           echo steps: "${{ toJson(steps) }}"
           echo github.path: "${{ github.path }}"
+          echo steps.test.status: "${{ steps.test.status }}"
