@@ -1,12 +1,9 @@
 name: CI/CD Jest Basic Mocking
 
 on:
-  pull_request:
+  push:
     branches:
-      - staging
-      - dev
-    types:
-      - closed
+      - main
   # workflow_run:
   #   workflows: [DOCKER_CI/CD]
   #   types: [completed]
