@@ -26,7 +26,6 @@ on:
   #         - production
   #         - staging
   #         - development
-
 jobs:
   build:
     # strategy:
@@ -70,3 +69,4 @@ jobs:
           echo github.path: "${{ github.path }}"
           echo vars: "${{ toJson(vars) }}"
           echo secrets: ${{ toJson(secrets) }}
+          echo env: "${{ toJson(env) }}"
