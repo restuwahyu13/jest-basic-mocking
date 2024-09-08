@@ -1,0 +1,47 @@
+name: CI/CD Jest Basic Mocking
+
+on:
+  pull_request:
+    types: closed
+    branches:
+      - dev
+  # workflow_run:
+  #   workflows: [DOCKER_CI/CD]
+  #   types: [completed]
+  #   branches:
+  #     - main
+  # workflow_dispatch:
+  #   inputs:
+  #     branch:
+  #       description: Pilih branch yang ingin anda deploy
+  #       required: true
+  # environtment:
+  #   description: Pilih environtment yang ingin anda deploy
+  #   type: choice
+  #   options:
+  #     - production
+  #     - staging
+
+jobs:
+  build:
+    # strategy:
+    #   max-parallel: 3
+    #   matrix:
+    #     os: [ubuntu-latest, windows-latest]
+    #     node-version: [12, 14, 16, 18, 20]
+    # runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Check credentials
+        run: echo ${{ env.JWT_SECRET }}
+
+      - name: Install all dependencies
+        run: npm ci
+
+      - name: Run all test cases
+        run: npm test
