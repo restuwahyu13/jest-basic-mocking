@@ -1,20 +1,20 @@
-name: DOCKER_CI/CD
+# name: DOCKER_CI/CD
 
-on:
-  schedule:
-    - cron: '*/1 * * * *'
-  push:
-    branches:
-      - main
+# on:
+#   schedule:
+#     - cron: '*/1 * * * *'
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Docker login
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Docker run
-        run: docker run hello-world
+# jobs:
+#   docker:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Docker login
+#         uses: docker/login-action@v3
+#         with:
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#       - name: Docker run
+#         run: docker run hello-world
