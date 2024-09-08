@@ -2,10 +2,10 @@ name: DOCKER_CI/CD
 
 on:
   schedule:
-    - cron: '* * * * *'
-  # push:
-  #   branches:
-  #     - main
+    - cron: '*/1 * * * *'
+  push:
+    branches:
+      - main
 
 jobs:
   docker:
