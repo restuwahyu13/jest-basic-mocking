@@ -81,8 +81,12 @@ jobs:
 
       - name: Previous Step Failure
         id: failure
-        if: ${{ failure() }}
-        run: echo "Previous Steps Failure ${{ runner.name }}"
+        # if: ${{ failure() }}
+        run: |
+          echo "Previous Steps Failure ${{ runner.name }}"
+          echo "name=jamal" >> "$GITHUB_ENV"
 
       - name: Previous Step Success
-        run: echo "Previous Steps Success ${{ steps.failure.outcome }}"
+        run: |
+          echo "Previous Steps Success ${{ steps.failure.outcome }}"
+          echo "Name: ${{ env.name }}"
