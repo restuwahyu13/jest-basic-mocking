@@ -23,7 +23,7 @@ describe('Mocking using jest.spyOn and mockRestore function', function () {
 
 		expect(person.get).toBeDefined()
 		expect(jest.isMockFunction(mockSpy)).toBeTruthy()
-		expect(beforeMockValue).toMatchObject({ name: 'restu wahyu saputra', age: 25, hobby: 'coding' })
+		expect(beforeMockValue).toMatchObject({ name: 'max cavalera', age: 25, hobby: 'coding' })
 		done()
 	})
 })

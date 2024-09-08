@@ -17,14 +17,14 @@ describe('Mocking using external jest.unmock', function () {
 
 		expect(person.get).toBeDefined()
 		expect(jest.isMockFunction(person.get)).toBeFalsy()
-		expect(data).toMatchObject({ name: 'restu wahyu saputra', age: 25, hobby: 'coding' })
+		expect(data).toMatchObject({ name: 'max cavalera', age: 25, hobby: 'coding' })
 	})
 
 	it('Result data using person.set', function () {
-		const data = person.set({ name: 'restu wahyu saputra', age: 25, hobby: 'coding' })
+		const data = person.set({ name: 'max cavalera', age: 25, hobby: 'coding' })
 
 		expect(person.set).toBeDefined()
 		expect(jest.isMockFunction(person.set)).toBeFalsy()
-		expect(data).toMatchObject({ name: 'restu wahyu saputra', age: 25, hobby: 'coding' })
+		expect(data).toMatchObject({ name: 'max cavalera', age: 25, hobby: 'coding' })
 	})
 })
