@@ -1,7 +1,8 @@
 name: CI/CD Jest Basic Mocking
 
 on:
-  push:
+  pull_request:
+    types: closed
     branches:
       - dev
   # workflow_run:
