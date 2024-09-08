@@ -70,4 +70,3 @@ jobs:
           echo github.path: "${{ github.path }}"
           echo vars: "${{ toJson(vars) }}"
           echo secrets: ${{ toJson(secrets) }}
-          echo success(): ${{ success()}}
