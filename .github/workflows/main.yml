@@ -1,11 +1,11 @@
 name: CI/CD Jest Basic Mocking
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - closed
+  # pull_request:
+  #   branches:
+  #     - main
+  #   types:
+  #     - closed
   push:
     branches:
       - main
@@ -34,7 +34,6 @@ jobs:
     #     os: [ubuntu-latest, windows-latest]
     #     node-version: [12, 14, 16, 18, 20]
     # runs-on: ${{ matrix.os }}
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
