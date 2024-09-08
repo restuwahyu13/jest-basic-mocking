@@ -2,9 +2,11 @@ name: CI/CD Jest Basic Mocking
 
 on:
   pull_request:
-    types: closed
     branches:
-      - main
+      - staging
+      - dev
+    types:
+      - closed
   # workflow_run:
   #   workflows: [DOCKER_CI/CD]
   #   types: [completed]
@@ -30,12 +32,13 @@ jobs:
     #     os: [ubuntu-latest, windows-latest]
     #     node-version: [12, 14, 16, 18, 20]
     # runs-on: ${{ matrix.os }}
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: main
+        # with:
+        #   ref: main
 
       - name: Check credentials
         run: echo ${{ env.JWT_SECRET }}
