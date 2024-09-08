@@ -6,26 +6,26 @@ on:
   #     - main
   #   types:
   #     - closed
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   # workflow_run:
   #   workflows: [DOCKER_CI/CD]
   #   types: [completed]
   #   branches:
   #     - main
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: Pilih branch yang ingin anda deploy
-        required: true
-      environtment:
-        description: Pilih environtment yang ingin anda deploy
-        type: choice
-        options:
-          - production
-          - staging
-          - development
+  # workflow_dispatch:
+  #   inputs:
+  #     branch:
+  #       description: Pilih branch yang ingin anda deploy
+  #       required: true
+  #     environtment:
+  #       description: Pilih environtment yang ingin anda deploy
+  #       type: choice
+  #       options:
+  #         - production
+  #         - staging
+  #         - development
 
 jobs:
   build:
@@ -50,3 +50,20 @@ jobs:
 
       - name: Run all test cases
         run: npm test
+
+      - name: Method Github
+        run: |
+          echo github.event_name:  "${{ github.event_name }}"
+          echo github.event: "${{ github.event }}"
+          echo github.ref: "${{ github.ref }}"
+          echo github.ref_name: "${{ github.ref_name }}"
+          echo github.ref_type: "${{ github.ref_type }}"
+          echo github.job: "${{ github.job }}"
+          echo github.actor: "${{ github.actor }}"
+          echo github.actor_id: "${{ github.actor_id }}"
+          echo job.status: "${{ job.status }}"
+          echo github.action_status: "${{ github.action_status }}"
+          echo github.action_ref: "${{ github.action_ref }}"
+          echo github.action_repository : "${{ github.action_repository }}"
+          echo steps: "${{ steps }}"
+          echo github.path: "${{ github.path }}"
