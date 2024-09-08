@@ -40,7 +40,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ inputs.branch }}
 
       - name: Check credentials
         run: echo ${{ env.JWT_SECRET }}
