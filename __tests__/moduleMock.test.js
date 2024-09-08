@@ -44,7 +44,7 @@ describe('Mocking using external jest.mock with node_modules', function () {
 
 		// if you use mockResolvedValue you can't use await because it is already a promise
 		const data = axios.post('https://jsonplaceholder.typicode.com/users/1', {
-			name: 'max cavalera',
+			name: 'jamal cavalera',
 			age: 25,
 			hobby: 'coding'
 		})

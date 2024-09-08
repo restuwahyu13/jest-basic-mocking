@@ -40,7 +40,7 @@ describe('Mocking using jest.spyOn function', function () {
 		const mockSpy = jest.spyOn(person, 'set')
 		mockSpy.mockResolvedValue({ name: 'john doe', age: 28, hobby: 'swimming' })
 
-		const data = person.set({ name: 'max cavalera', age: 25, hobby: 'coding' })
+		const data = person.set({ name: 'jamal cavalera', age: 25, hobby: 'coding' })
 
 		expect(person.set).toBeDefined()
 		expect(jest.isMockFunction(mockSpy)).toBeTruthy()
