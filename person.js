@@ -2,7 +2,7 @@ const person = {
 	set: (data) => data,
 	get: function () {
 		return {
-			name: 'restu wahyu saputra',
+			name: 'max cavalera',
 			age: 25,
 			hobby: 'coding'
 		}
