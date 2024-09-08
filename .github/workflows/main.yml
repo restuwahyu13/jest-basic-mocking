@@ -37,23 +37,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
+        id: checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branch }}
 
       - name: Check credentials
+        id: check
         run: echo ${{ env.JWT_SECRET }}
 
       - name: Install all dependencies
         run: npm ci
 
       - name: Run all test cases
+        id: test
         run: npm test
 
       - name: Method Github
         run: |
           echo "${{ toJson(needs) }}"
           echo "${{ toJson(runner) }}"
+          echo "${{ toJson(steps) }}"
       #   run: |
       #     echo github: "${{ toJson(github) }}"
       #     echo github.event_name:  "${{ github.event_name }}"
@@ -78,3 +82,7 @@ jobs:
       - name: Previous Step Success
         if: ${{ success() }}
         run: echo "Previous Steps Success ${{ runner.name }}"
+
+      - name: Previous Step Failure
+        if: ${{ failure() }}
+        run: echo "Previous Steps Failure ${{ runner.name }}"
