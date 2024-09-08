@@ -2,7 +2,7 @@ const person = {
 	set: (data) => data,
 	get: function () {
 		return {
-			name: 'jamal cavalera',
+			name: 'jamal cavalera v1',
 			age: 25,
 			hobby: 'coding'
 		}

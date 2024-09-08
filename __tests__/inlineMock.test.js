@@ -42,7 +42,7 @@ describe('Mocking using inline jest.mock', function () {
 	it('Result data using mockResolvedValue', async function (done) {
 		person.set.mockResolvedValue({ name: 'john doe', age: 28, hobby: 'swimming' })
 
-		const data = person.set({ name: 'jamal cavalera', age: 25, hobby: 'coding' })
+		const data = person.set({ name: 'jamal cavalera v1', age: 25, hobby: 'coding' })
 
 		expect(person.set).toBeDefined()
 		expect(jest.isMockFunction(person.set)).toBeTruthy()
