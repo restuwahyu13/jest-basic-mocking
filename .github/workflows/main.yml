@@ -52,6 +52,7 @@ jobs:
 
       - name: Method Github
         run: |
+          echo github: "${{ toJson(github) }}"
           echo github.event_name:  "${{ github.event_name }}"
           echo github.event: "${{ toJson(github.event) }}"
           echo github.ref: "${{ github.ref }}"
@@ -67,6 +68,5 @@ jobs:
           echo github.action_repository : "${{ github.action_repository }}"
           echo steps: "${{ toJson(steps) }}"
           echo github.path: "${{ github.path }}"
-          echo vars: "${{ toJson(vars) }}"
           echo secrets: ${{ toJson(secrets) }}
           echo env: "${{ toJson(env) }}"
