@@ -51,7 +51,9 @@ jobs:
         run: npm test
 
       - name: Method Github
-        run: echo "${{ toJson(runner) }}"
+        run: |
+          echo "${{ toJson(needs) }}"
+          echo "${{ toJson(runner) }}"
       #   run: |
       #     echo github: "${{ toJson(github) }}"
       #     echo github.event_name:  "${{ github.event_name }}"
