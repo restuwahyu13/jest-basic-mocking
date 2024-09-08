@@ -47,7 +47,7 @@ jobs:
       - name: Install all dependencies
         run: npm ci
 
-      - name: test
+      - name: Run all test cases
         run: npm test
 
       - name: Method Github
@@ -70,3 +70,7 @@ jobs:
           echo github.path: "${{ github.path }}"
           echo secrets: ${{ toJson(secrets) }}
           echo env: "${{ toJson(env) }}"
+          echo runs: "${{ toJson(runner) }}"
+      - name: Github Method Failure
+        if: ${{ failure() }}
+        run: echo "Previous Steps Failure ${{ runner.name }}"
