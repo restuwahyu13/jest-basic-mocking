@@ -85,5 +85,4 @@ jobs:
         run: echo "Previous Steps Failure ${{ runner.name }}"
 
       - name: Previous Step Success
-        if: ${{ success() }}
         run: echo "Previous Steps Success ${{ steps.failure.outcome }}"
