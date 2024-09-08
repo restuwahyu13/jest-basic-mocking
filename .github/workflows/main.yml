@@ -1,6 +1,12 @@
 name: CI/CD Jest Basic Mocking
 
 on:
+  pull_request:
+    branches:
+      - staging
+      - dev
+    types:
+      - closed
   push:
     branches:
       - main
@@ -34,8 +40,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        # with:
-        #   ref: main
+        with:
+          ref: main
 
       - name: Check credentials
         run: echo ${{ env.JWT_SECRET }}
