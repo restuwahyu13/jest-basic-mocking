@@ -54,7 +54,7 @@ jobs:
       - name: Method Github
         run: |
           echo github.event_name:  "${{ github.event_name }}"
-          echo github.event: "${{ github.event }}"
+          echo github.event: "${{ toJson(github.event) }}"
           echo github.ref: "${{ github.ref }}"
           echo github.ref_name: "${{ github.ref_name }}"
           echo github.ref_type: "${{ github.ref_type }}"
@@ -65,5 +65,5 @@ jobs:
           echo github.action_status: "${{ github.action_status }}"
           echo github.action_ref: "${{ github.action_ref }}"
           echo github.action_repository : "${{ github.action_repository }}"
-          echo steps: "${{ steps }}"
+          echo steps: "${{ toJson(steps) }}"
           echo github.path: "${{ github.path }}"
