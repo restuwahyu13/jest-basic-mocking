@@ -46,9 +46,10 @@ jobs:
       - name: Setup nodejs version
         uses: restubroom13/gh-action-composite-workflow@main
         with:
-          nodejsVersion: 16.x
+          nodejsVersion: 20.x
 
       - name: Install all dependencies
+        id: install
         run: npm ci
 
       - name: Run all test cases
