@@ -48,10 +48,6 @@ jobs:
         with:
           nodejsVersion: 12.x
 
-      - name: Check node version
-        id: check
-        run: node -v
-
       - name: Install all dependencies
         run: npm ci
 
