@@ -65,9 +65,9 @@ jobs:
 
       - name: Method Github
         run: |
-          echo "${{ toJson(needs) }}"
-          echo "${{ toJson(runner) }}"
-          echo "${{ toJson(steps) }}"
+          echo needs: "${{ toJson(needs) }}"
+          echo runner: "${{ toJson(runner) }}"
+          echo steps: "${{ toJson(steps) }}"
           echo github: "${{ toJson(github) }}"
           echo github.event_name:  "${{ github.event_name }}"
           echo github.event: "${{ toJson(github.event) }}"
@@ -82,11 +82,9 @@ jobs:
           echo github.action_status: "${{ github.action_status }}"
           echo github.action_ref: "${{ github.action_ref }}"
           echo github.action_repository : "${{ github.action_repository }}"
-          echo steps: "${{ toJson(steps) }}"
           echo github.path: "${{ github.path }}"
           echo secrets: ${{ toJson(secrets) }}
           echo env: "${{ toJson(env) }}"
-          echo runs: "${{ toJson(runner) }}"
 
       - name: Previous Step Failure
         id: failure
