@@ -45,6 +45,8 @@ jobs:
 
       - name: Setup nodejs version
         uses: restubroom13/gh-action-composite-workflow@main
+        with:
+          nodejsVersion: 12.x
 
       - name: Check node version
         id: check
