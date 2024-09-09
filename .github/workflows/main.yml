@@ -48,7 +48,10 @@ jobs:
 
       - name: Check credentials
         id: check
-        run: echo ${{ env.JWT_SECRET }}
+        run: |
+          echo node -v
+          echo npm -v
+          echo ${{ env.JWT_SECRET }}
 
       - name: Install all dependencies
         run: npm ci
