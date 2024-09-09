@@ -28,6 +28,15 @@ on:
   #         - staging
   #         - development
 jobs:
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup go version
+        uses: restubroom13/gh-action-composite-workflow@main
+        
+      - name: Print go env
+        run: go env
+    
   build:
     # strategy:
     #   max-parallel: 3
