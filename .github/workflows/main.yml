@@ -46,12 +46,9 @@ jobs:
       - name: Setup nodejs version
         uses: restubroom13/gh-action-composite-workflow@main
 
-      - name: Check credentials
+      - name: Check node version
         id: check
-        run: |
-          echo node -v
-          echo npm -v
-          echo ${{ env.JWT_SECRET }}
+        run: node -v
 
       - name: Install all dependencies
         run: npm ci
