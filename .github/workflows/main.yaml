@@ -28,7 +28,11 @@ on:
   #         - staging
   #         - development
 jobs:
+  hello: # reuseable action workflows same repo
+    uses: ./.github/workflows/reusable.yaml
+
   py: # reuseable action workflows
+    needs: hello
     uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@v1.0.2
     
   go: # composite action workflows
