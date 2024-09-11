@@ -36,7 +36,7 @@ jobs:
     needs: py
     steps:
       - name: Setup go version
-        uses: restubroom13/gh-action-composite-workflow@main
+        uses: restubroom13/gh-action-composite-workflow@v1
 
       - name: Print go env
         run: go env
@@ -49,7 +49,7 @@ jobs:
     #     node-version: [12, 14, 16, 18, 20]
     # runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
-    needs: py
+    needs: go
     steps:
       - name: Checkout repository
         id: checkout
