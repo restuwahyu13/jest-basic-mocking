@@ -1,0 +1,16 @@
+name: Composite Workflows Local
+description: Composite workflow local for custom uses
+inputs:
+  nodejsVersion:
+    description: Setup your specific nodejs version
+    required: false
+    type: string
+    default: 16.x
+    
+runs:
+  using: composite
+  steps:
+    - name: Install nodejs sdk
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.nodejsVersion }}
