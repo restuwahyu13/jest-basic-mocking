@@ -18,3 +18,6 @@ jobs:
       - name: Print Hello Wordl!
         id: hello
         run: echo "TEXT=${{ inputs.enterKeywords }} - Included shared output" >> $GITHUB_OUTPUT
+
+      - name: Print output from previous steps
+        run: echo "${{ toJson(steps) }}"
