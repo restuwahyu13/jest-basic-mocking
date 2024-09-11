@@ -36,6 +36,12 @@ jobs:
       with:
         enterKeywords: 'Hello World!'
 
+  composite-local: 
+    runs-on: ubuntu:latest
+    steps:
+    - name: Composite inside steps
+      uses: ./.github/workflows/action.yaml
+
   hello: # reuseable action workflows same repo
     uses: ./.github/workflows/reusable.yaml
     with:
