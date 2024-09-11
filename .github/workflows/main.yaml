@@ -29,13 +29,13 @@ on:
   #         - development
 jobs:
   py:
-    uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@main
+    uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@v1
     
   go:
     runs-on: ubuntu-latest
     steps:
       - name: Setup go version
-        uses: restubroom13/gh-action-composite-workflow@main
+        uses: restubroom13/gh-action-composite-workflow@v1
 
       - name: Print go env
         run: go env
