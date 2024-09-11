@@ -1,0 +1,16 @@
+name: Reusable Workflows Local
+
+on:
+  workflow_call:
+      inputs:
+        enterKeywords:
+          description: Enter your input
+          required: true  
+          type: string
+          
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello Wordl!
+        run: echo "${{ inputs.enterKeywords }}"
