@@ -12,7 +12,7 @@ jobs:
   print:
     runs-on: ubuntu-latest
     outputs:
-      context: ${{ steps.text.outputs }}
+      context: ${{ steps.hello.outputs.text }}
     steps:
       - name: Print Hello Wordl!
         id: hello
