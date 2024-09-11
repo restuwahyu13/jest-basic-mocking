@@ -28,6 +28,15 @@ on:
   #         - staging
   #         - development
 jobs:
+  py:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup python version
+        uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@main
+
+      - name: Print py env
+        run: python3 -h
+        
   go:
     runs-on: ubuntu-latest
     steps:
@@ -37,7 +46,7 @@ jobs:
       - name: Print go env
         run: go env
 
-  build:
+  node:
     # strategy:
     #   max-parallel: 3
     #   matrix:
@@ -54,9 +63,6 @@ jobs:
 
       - name: Setup nodejs version
         uses: restubroom13/gh-action-composite-workflow@main
-
-      - name: Setup python version
-        uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@main
 
       - name: Install all dependencies
         id: install
