@@ -30,6 +30,8 @@ on:
 jobs:
   hello: # reuseable action workflows same repo
     uses: ./.github/workflows/reusable.yaml
+    with:
+      enterKeywords: 'Hello World!'
 
   py: # reuseable action workflows
     needs: hello
