@@ -12,8 +12,8 @@ jobs:
   print:
     runs-on: ubuntu-latest
     outputs:
-      context: ${{ steps.hello.outputs.text }}
+      content: ${{ steps.hello.outputs.TEXT }}
     steps:
       - name: Print Hello Wordl!
         id: hello
-        run: echo "text=${{ inputs.enterKeywords }} - Included shared output" >> $GITHUB_OUTPUT
+        run: echo "TEXT=${{ inputs.enterKeywords }} - Included shared output" >> $GITHUB_OUTPUT
