@@ -39,8 +39,8 @@ jobs:
     steps:
       - name: Print previous jobs output hello
         run: |
-          echo "${{ needs.jobs.context }}"
-          echo "${{ needs.jobs.outputs.context }}"
+          echo "${{ needs.hello.context }}"
+          echo "${{ needs.hello.outputs.context }}"
 
   py: # reuseable action workflows
     needs: hello2
