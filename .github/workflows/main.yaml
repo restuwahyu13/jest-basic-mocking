@@ -29,7 +29,7 @@ on:
   #         - development
 jobs:
   py:
-    uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@main
+    uses: restubroom13/gh-action-reusable-workflow/.github/actions/reusable.yaml@main
         
   go:
     runs-on: ubuntu-latest
