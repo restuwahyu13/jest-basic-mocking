@@ -56,7 +56,7 @@ jobs:
         uses: restubroom13/gh-action-composite-workflow@main
 
       - name: Setup python version
-        uses: restubroom13/gh-action-reusable-workflow/reusable.yaml
+        uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml
 
       - name: Install all dependencies
         id: install
