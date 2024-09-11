@@ -28,17 +28,17 @@ on:
   #         - staging
   #         - development
 jobs:
-  py:
-    uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@v1.0.2
-    
-  go:
+  go: # composite action workflows
     runs-on: ubuntu-latest
     steps:
       - name: Setup go version
-        uses: restubroom13/gh-action-composite-workflow@v5
+        uses: restubroom13/gh-action-composite-workflow@main
 
       - name: Print go env
         run: go env
+
+  py: # reuseable acvtion workflows
+    uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@v1.0.2
 
   node:
     # strategy:
