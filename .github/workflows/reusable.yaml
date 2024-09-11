@@ -16,4 +16,4 @@ jobs:
     steps:
       - name: Print Hello Wordl!
         id: hello
-        run: echo "text=${{ inputs.enterKeywords }} - Included shared output" >> GITHUB_OUTPUT
+        run: echo "text=${{ inputs.enterKeywords }} - Included shared output" >> $GITHUB_OUTPUT
