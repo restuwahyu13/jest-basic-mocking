@@ -5,7 +5,9 @@ on:
     outputs:
       context:
         description: Output for other actions
-        value: ${{ jobs.print.output.content }}
+        value: |
+          "${{ toJson(jobs) }}"
+          "${{ toJson(needs) }}"
 
     inputs:
       enterKeywords:
