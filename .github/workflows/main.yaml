@@ -28,6 +28,14 @@ on:
   #         - staging
   #         - development
 jobs:
+  reuseable-steps: 
+    runs-on: ubuntu:latest
+    steps:
+    - name: Reuseables inside steps
+      uses: ./.github/workflows/reusable.yaml
+      with:
+        enterKeywords: 'Hello World!'
+
   hello: # reuseable action workflows same repo
     uses: ./.github/workflows/reusable.yaml
     with:
