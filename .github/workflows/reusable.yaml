@@ -2,15 +2,18 @@ name: Reusable Workflows Local
 
 on:
   workflow_call:
-      inputs:
-        enterKeywords:
-          description: Enter your input
-          required: true  
-          type: string
-          
+    inputs:
+      enterKeywords:
+        description: Enter your input
+        required: true
+        type: string
+
 jobs:
   print:
     runs-on: ubuntu-latest
+    outputs:
+      context: ${{ steps.text.outputs }}
     steps:
       - name: Print Hello Wordl!
-        run: echo "${{ inputs.enterKeywords }}"
+        id: hello
+        run: echo "text=${{ inputs.enterKeywords }} - Included shared output" >> GITHUB_OUTPUT
