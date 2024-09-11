@@ -39,97 +39,100 @@ jobs:
   composite-local: 
     runs-on: ubuntu:latest
     steps:
-    - name: Composite inside steps
+    - name: Composite workflows local
       uses: ./.github/workflows/action.yaml
 
-  hello: # reuseable action workflows same repo
-    uses: ./.github/workflows/reusable.yaml
-    with:
-      enterKeywords: 'Hello World!'
+  composite-workflows-local: 
+      uses: ./.github/workflows/action.yaml
 
-  hello2:
-    runs-on: ubuntu-latest
-    needs: hello
-    steps:
-      - name: Print previous jobs output
-        run: |
-          echo needs: "${{ toJson(needs) }}"
-          echo job: "${{ toJson(job) }}"
-          echo steps: "${{ toJson(steps) }}"
+  # hello: # reuseable action workflows same repo
+  #   uses: ./.github/workflows/reusable.yaml
+  #   with:
+  #     enterKeywords: 'Hello World!'
 
-  py: # reuseable action workflows
-    needs: hello2
-    uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@v1
+  # hello2:
+  #   runs-on: ubuntu-latest
+  #   needs: hello
+  #   steps:
+  #     - name: Print previous jobs output
+  #       run: |
+  #         echo needs: "${{ toJson(needs) }}"
+  #         echo job: "${{ toJson(job) }}"
+  #         echo steps: "${{ toJson(steps) }}"
+
+  # py: # reuseable action workflows
+  #   needs: hello2
+  #   uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@v1
     
-  go: # composite action workflows
-    runs-on: ubuntu-latest
-    needs: py
-    steps:
-      - name: Setup go version
-        uses: restubroom13/gh-action-composite-workflow@v1
+  # go: # composite action workflows
+  #   runs-on: ubuntu-latest
+  #   needs: py
+  #   steps:
+  #     - name: Setup go version
+  #       uses: restubroom13/gh-action-composite-workflow@v1
 
-      - name: Print go env
-        run: go env 
+  #     - name: Print go env
+  #       run: go env 
         
-  node: # normal action workflows
-    # strategy:
-    #   max-parallel: 3
-    #   matrix:
-    #     os: [ubuntu-latest, windows-latest]
-    #     node-version: [12, 14, 16, 18, 20]
-    # runs-on: ${{ matrix.os }}
-    runs-on: ubuntu-latest
-    needs: go
-    steps:
-      - name: Checkout repository
-        id: checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.branch }}
+  # node: # normal action workflows
+  #   # strategy:
+  #   #   max-parallel: 3
+  #   #   matrix:
+  #   #     os: [ubuntu-latest, windows-latest]
+  #   #     node-version: [12, 14, 16, 18, 20]
+  #   # runs-on: ${{ matrix.os }}
+  #   runs-on: ubuntu-latest
+  #   needs: go
+  #   steps:
+  #     - name: Checkout repository
+  #       id: checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: ${{ inputs.branch }}
 
-      - name: Setup nodejs version
-        uses: restubroom13/gh-action-composite-workflow@main
+  #     - name: Setup nodejs version
+  #       uses: restubroom13/gh-action-composite-workflow@main
 
-      - name: Install all dependencies
-        id: install
-        run: npm ci
+  #     - name: Install all dependencies
+  #       id: install
+  #       run: npm ci
 
-      - name: Run all test cases
-        id: test
-        run: npm test
+  #     - name: Run all test cases
+  #       id: test
+  #       run: npm test
 
-      # - name: Method Github
-      #   run: |
-      #     echo needs: "${{ toJson(needs) }}"
-      #     echo runner: "${{ toJson(runner) }}"
-      #     echo steps: "${{ toJson(steps) }}"
-      #     echo github: "${{ toJson(github) }}"
-      #     echo github.event_name:  "${{ github.event_name }}"
-      #     echo github.event: "${{ toJson(github.event) }}"
-      #     echo github.ref: "${{ github.ref }}"
-      #     echo github.ref_name: "${{ github.ref_name }}"
-      #     echo github.ref_type: "${{ github.ref_type }}"
-      #     echo github.job: "${{ github.job }}"
-      #     echo github.actor: "${{ github.actor }}"
-      #     echo github.actor_id: "${{ github.actor_id }}"
-      #     echo job: "${{ toJson(job) }}"
-      #     echo job.status: "${{ job.status }}"
-      #     echo github.action_status: "${{ github.action_status }}"
-      #     echo github.action_ref: "${{ github.action_ref }}"
-      #     echo github.action_repository : "${{ github.action_repository }}"
-      #     echo github.path: "${{ github.path }}"
-      #     echo secrets: ${{ toJson(secrets) }}
-      #     echo env: "${{ toJson(env) }}"
+  #     # - name: Method Github
+  #     #   run: |
+  #     #     echo needs: "${{ toJson(needs) }}"
+  #     #     echo runner: "${{ toJson(runner) }}"
+  #     #     echo steps: "${{ toJson(steps) }}"
+  #     #     echo github: "${{ toJson(github) }}"
+  #     #     echo github.event_name:  "${{ github.event_name }}"
+  #     #     echo github.event: "${{ toJson(github.event) }}"
+  #     #     echo github.ref: "${{ github.ref }}"
+  #     #     echo github.ref_name: "${{ github.ref_name }}"
+  #     #     echo github.ref_type: "${{ github.ref_type }}"
+  #     #     echo github.job: "${{ github.job }}"
+  #     #     echo github.actor: "${{ github.actor }}"
+  #     #     echo github.actor_id: "${{ github.actor_id }}"
+  #     #     echo job: "${{ toJson(job) }}"
+  #     #     echo job.status: "${{ job.status }}"
+  #     #     echo github.action_status: "${{ github.action_status }}"
+  #     #     echo github.action_ref: "${{ github.action_ref }}"
+  #     #     echo github.action_repository : "${{ github.action_repository }}"
+  #     #     echo github.path: "${{ github.path }}"
+  #     #     echo secrets: ${{ toJson(secrets) }}
+  #     #     echo env: "${{ toJson(env) }}"
 
-      - name: Previous Step Failure
-        id: failure
-        # if: ${{ failure() }}
-        run: |
-          echo "Previous Steps Failure ${{ runner.name }}"
-          echo "name=jamal" >> "$GITHUB_ENV"
+  #     - name: Previous Step Failure
+  #       id: failure
+  #       # if: ${{ failure() }}
+  #       run: |
+  #         echo "Previous Steps Failure ${{ runner.name }}"
+  #         echo "name=jamal" >> "$GITHUB_ENV"
 
-      - name: Previous Step Success
-        run: |
-          echo "Previous Steps Success ${{ steps.failure.outcome }}"
-          echo "Name: ${{ env.name }}"
-          echo '### Hello Wordl' >> $GITHUB_STEP_SUMMARY
+  #     - name: Previous Step Success
+  #       run: |
+  #         echo "Previous Steps Success ${{ steps.failure.outcome }}"
+  #         echo "Name: ${{ env.name }}"
+  #         echo '### Hello Wordl' >> $GITHUB_STEP_SUMMARY
