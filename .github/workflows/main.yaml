@@ -39,8 +39,8 @@ jobs:
     steps:
       - name: Print previous jobs output
         run: |
-          echo "${{ needs.hello.content }}"
-          echo "${{ needs.hello.outputs.content }}"
+          echo "${{ jobs.hello.content }}"
+          echo "${{ jobs.hello.outputs.content }}"
 
   py: # reuseable action workflows
     needs: hello2
