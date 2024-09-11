@@ -29,13 +29,7 @@ on:
   #         - development
 jobs:
   py:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup python version
-        uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@main
-
-      - name: Print py env
-        run: python3 -h
+    uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@main
         
   go:
     runs-on: ubuntu-latest
