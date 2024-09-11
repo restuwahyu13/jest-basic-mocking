@@ -5,7 +5,7 @@ on:
     outputs:
       context:
         description: Output for other actions
-        value: "Bisa nih bos"
+        value: ${{ jobs.print.outputs.content }}
 
     inputs:
       enterKeywords:
