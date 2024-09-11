@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: hello
     steps:
-      - name: Print previous jobs output hello
+      - name: Print previous jobs output
         run: |
           echo "${{ needs.hello.context }}"
           echo "${{ needs.hello.outputs.context }}"
