@@ -5,9 +5,7 @@ on:
     outputs:
       context:
         description: Output for other actions
-        value: |
-          "${{ toJson(jobs) }}"
-          "${{ toJson(needs) }}"
+        value: "Bisa nih bos"
 
     inputs:
       enterKeywords:
