@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       content: ${{ steps.hello.outputs.TEXT }}
+      
     steps:
       - name: Print Hello Wordl!
         id: hello
