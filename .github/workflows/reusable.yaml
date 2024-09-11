@@ -2,6 +2,11 @@ name: Reusable Workflows Local
 
 on:
   workflow_call:
+    outputs:
+      context:
+        description: Output for other actions
+        value: ${{ jobs.print.output.content }}
+
     inputs:
       enterKeywords:
         description: Enter your input
@@ -13,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       content: ${{ steps.hello.outputs.TEXT }}
-      
+
     steps:
       - name: Print Hello Wordl!
         id: hello
