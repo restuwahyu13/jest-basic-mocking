@@ -68,7 +68,9 @@ jobs:
           path: index.txt
 
       - name: Print file
-        run: ls -la
+        run: |
+          ls -lfish
+          cat ${pwd}/index.txt
 
   # composite-workflows-local: // tidak bisa tanpa event
   #     uses: ./.github/workflows/action.yaml
