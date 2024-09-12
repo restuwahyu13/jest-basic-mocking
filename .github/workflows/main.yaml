@@ -64,13 +64,11 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: File # nama file harus sama
+          name: Filex # nama file harus sama
           path: .
 
       - name: Print file
-        run: |
-          ls -lfish
-          cat index.txt
+        run: cat index.txt
 
   # composite-workflows-local: // tidak bisa tanpa event
   #     uses: ./.github/workflows/action.yaml
