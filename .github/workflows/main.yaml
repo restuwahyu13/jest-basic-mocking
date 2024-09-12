@@ -28,19 +28,19 @@ on:
   #         - staging
   #         - development
 jobs:
-  reuseable-steps:
-    runs-on: ubuntu:latest
-    steps:
-      - name: Reuseables inside steps
-        uses: ./.github/workflows/reusable.yaml
-        with:
-          enterKeywords: 'Hello World!'
+  # reuseable-steps: # tidak berjalan issue
+  #   runs-on: ubuntu:latest
+  #   steps:
+  #     - name: Reuseables inside steps
+  #       uses: ./.github/workflows/reusable.yaml
+  #       with:
+  #         enterKeywords: 'Hello World!'
 
-  composite-local:
-    runs-on: ubuntu:latest
-    steps:
-      - name: Composite workflows local
-        uses: ./.github/workflows/action.yaml
+  # composite-local:  # tidak berjalan issue
+  #   runs-on: ubuntu:latest
+  #   steps:
+  #     - name: Composite workflows local
+  #       uses: ./.github/workflows/action.yaml
 
   archive:
     runs-on: ubuntu-latest
