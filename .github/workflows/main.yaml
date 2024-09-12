@@ -54,6 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: File # nama file harus sama
+          path: .
           compression-level: 9
 
   unarchive:
@@ -64,6 +65,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: File # nama file harus sama
+          path: .
 
       - name: Print file
         run: |
