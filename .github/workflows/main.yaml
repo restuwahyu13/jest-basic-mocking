@@ -28,19 +28,46 @@ on:
   #         - staging
   #         - development
 jobs:
-  reuseable-steps: 
+  reuseable-steps:
     runs-on: ubuntu:latest
     steps:
-    - name: Reuseables inside steps
-      uses: ./.github/workflows/reusable.yaml
-      with:
-        enterKeywords: 'Hello World!'
+      - name: Reuseables inside steps
+        uses: ./.github/workflows/reusable.yaml
+        with:
+          enterKeywords: 'Hello World!'
 
-  composite-local: 
+  composite-local:
     runs-on: ubuntu:latest
     steps:
-    - name: Composite workflows local
-      uses: ./.github/workflows/action.yaml
+      - name: Composite workflows local
+        uses: ./.github/workflows/action.yaml
+
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create file
+        run: |
+          touch index.txt
+          echo 'Hello Wordl Artifact!' >> index.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Archive file txt
+          path: index.txt
+          compression-level: 9
+
+  unarchive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Unarchive file txt
+          path: index.txt
+
+      - name: Print file
+        run: echo index.txt
 
   # composite-workflows-local: // tidak bisa tanpa event
   #     uses: ./.github/workflows/action.yaml
@@ -63,7 +90,7 @@ jobs:
   # py: # reuseable action workflows
   #   needs: hello2
   #   uses: restubroom13/gh-action-reusable-workflow/.github/workflows/reusable.yaml@v1
-    
+
   # go: # composite action workflows
   #   runs-on: ubuntu-latest
   #   needs: py
@@ -72,8 +99,8 @@ jobs:
   #       uses: restubroom13/gh-action-composite-workflow@v1
 
   #     - name: Print go env
-  #       run: go env 
-        
+  #       run: go env
+
   # node: # normal action workflows
   #   # strategy:
   #   #   max-parallel: 3
